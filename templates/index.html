@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATS Resume Analyzer</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins', sans-serif;
+
+            min-height:100vh;
+
+            background:
+                linear-gradient(135deg,#eef4ff,#f7f9fc,#ffffff);
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            padding:40px 15px;
+        }
+
+        .main-card{
+
+            width:100%;
+            max-width:1200px;
+
+            border-radius:30px;
+            overflow:hidden;
+
+            background:white;
+
+            box-shadow:0 20px 60px rgba(0,0,0,0.08);
+
+            border:1px solid #edf2f7;
+        }
+
+        /* LEFT PANEL */
+
+        .left-panel{
+
+            background:linear-gradient(135deg,#f5f9ff,#edf4ff);
+
+            padding:60px 45px;
+
+            height:100%;
+        }
+
+        .badge-custom{
+
+            display:inline-block;
+
+            padding:10px 18px;
+
+            background:#dbeafe;
+
+            color:#2563eb;
+
+            border-radius:50px;
+
+            font-size:14px;
+            font-weight:500;
+
+            margin-bottom:25px;
+        }
+
+        .left-panel h1{
+
+            font-size:48px;
+            font-weight:700;
+
+            line-height:1.2;
+
+            color:#102a43;
+
+            margin-bottom:20px;
+        }
+
+        .left-panel p{
+
+            color:#52667a;
+
+            line-height:1.9;
+
+            font-size:16px;
+        }
+
+        .hero-img{
+
+            width:100%;
+
+            border-radius:25px;
+
+            margin-top:35px;
+
+            box-shadow:0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        /* RIGHT PANEL */
+
+        .right-panel{
+
+            padding:55px 45px;
+
+            background:white;
+        }
+
+        .form-title{
+
+            font-size:34px;
+            font-weight:700;
+
+            color:#102a43;
+
+            margin-bottom:8px;
+        }
+
+        .form-subtitle{
+
+            color:#7b8794;
+
+            margin-bottom:35px;
+        }
+
+        .form-label{
+
+            font-size:14px;
+
+            font-weight:600;
+
+            color:#243b53;
+
+            margin-bottom:10px;
+        }
+
+        .upload-box{
+
+            border:2px dashed #cbd5e1;
+
+            border-radius:22px;
+
+            padding:35px 25px;
+
+            text-align:center;
+
+            background:#f8fbff;
+
+            transition:0.3s ease;
+        }
+
+        .upload-box:hover{
+
+            border-color:#60a5fa;
+
+            background:#eff6ff;
+        }
+
+        .upload-box i{
+
+            font-size:42px;
+
+            color:#3b82f6;
+
+            margin-bottom:15px;
+        }
+
+        .upload-text{
+
+            font-size:15px;
+
+            color:#52667a;
+        }
+
+        .form-control{
+
+            border:none;
+
+            background:#f8fafc;
+
+            border-radius:18px;
+
+            min-height:58px;
+
+            padding:15px;
+
+            font-size:15px;
+
+            transition:all 0.3s ease;
+        }
+
+        textarea.form-control{
+
+            min-height:180px;
+
+            resize:none;
+        }
+
+        .form-control:focus{
+
+            background:white;
+
+            box-shadow:0 0 0 4px rgba(59,130,246,0.12);
+
+            border:none;
+        }
+
+        .analyze-btn{
+
+            height:60px;
+
+            border:none;
+
+            border-radius:18px;
+
+            background:linear-gradient(135deg,#60a5fa,#3b82f6);
+
+            color:white;
+
+            font-size:17px;
+            font-weight:600;
+
+            transition:0.3s ease;
+        }
+
+        .analyze-btn:hover{
+
+            transform:translateY(-2px);
+
+            box-shadow:0 14px 28px rgba(59,130,246,0.20);
+        }
+
+        .score-box{
+
+            margin-top:35px;
+
+            padding:30px;
+
+            border-radius:24px;
+
+            background:linear-gradient(135deg,#ecfdf5,#f0fdf4);
+
+            border:1px solid #bbf7d0;
+
+            text-align:center;
+        }
+
+        .score-box h4{
+
+            color:#15803d;
+
+            margin-bottom:10px;
+        }
+
+        .score{
+
+            font-size:60px;
+
+            font-weight:700;
+
+            color:#15803d;
+        }
+
+        .footer-note{
+
+            margin-top:25px;
+
+            text-align:center;
+
+            color:#94a3b8;
+
+            font-size:13px;
+        }
+
+        @media(max-width:991px){
+
+            .left-panel{
+
+                text-align:center;
+            }
+
+            .left-panel h1{
+
+                font-size:36px;
+            }
+
+            .right-panel{
+
+                padding:40px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="main-card">
+
+        <div class="row g-0">
+
+            <!-- LEFT SECTION -->
+
+            <div class="col-lg-5">
+
+                <div class="left-panel">
+
+                    <!-- <span class="badge-custom">
+                        AI Powered Resume Screening
+                    </span> -->
+
+                    <h1>
+                        Smart ATS <br>
+                        Resume Analyzer
+                    </h1>
+
+                    <p>
+                        Upload your resume and compare it with a job description
+                        to get an ATS compatibility score and improve your chances
+                        of getting shortlisted by recruiters.
+                    </p>
+
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
+                         alt="ATS Resume Analysis"
+                         class="hero-img">
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SECTION -->
+
+            <div class="col-lg-7">
+
+                <div class="right-panel">
+
+                    <h2 class="form-title">
+                        Analyze Your Resume
+                    </h2>
+
+                    <p class="form-subtitle">
+                        Upload your resume and paste the job description below
+                    </p>
+
+                    <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                        <!-- Resume Upload -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Upload Resume (PDF/DOCX)
+                            </label>
+
+                            <div class="upload-box">
+
+                                <i class="fa-solid fa-file-arrow-up"></i>
+
+                                <p class="upload-text mb-3">
+                                    Choose your resume file to upload
+                                </p>
+
+                                <input type="file"
+                                       name="resume"
+                                       class="form-control"
+                                       required>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Job Description -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Job Description
+                            </label>
+
+                            <textarea name="job_desc"
+                                      class="form-control"
+                                      placeholder="Paste the job description here..."
+                                      required></textarea>
+
+                        </div>
+
+                        <!-- Button -->
+
+                        <div class="d-grid">
+
+                            <button type="submit"
+                                    class="btn analyze-btn">
+
+                                <i class="fa-solid fa-magnifying-glass-chart me-2"></i>
+
+                                Analyze Resume
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <!-- SCORE -->
+
+                    {% if score %}
+
+                    <div class="score-box">
+
+                        <h4>
+                            Your ATS Score
+                        </h4>
+
+                        <div class="score">
+                            {{ score }}%
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+                    <!-- FOOTER -->
+
+                    <div class="footer-note">
+
+                        ⚠️ This tool is intended for educational and career guidance purposes only.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

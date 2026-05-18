@@ -1,0 +1,15 @@
+Data Analyst Job Description
+
+We are looking for a Data Analyst with strong experience in SQL, Python, and Power BI.
+
+Responsibilities:
+- Analyze large datasets
+- Build dashboards and reports
+- Work with stakeholders to gather requirements
+
+Required Skills:
+- SQL
+- Python
+- Power BI
+- Data Visualization
+- Communication Skills
